@@ -86,9 +86,11 @@ void SoftRenderer::Render2D()
 
 	// 카메라의 현재 원 바운딩
 	Circle cameraCircleBound(_GameEngine.GetCamera().GetCircleBound());
+
+	// 카메라의 현재 사각형 바운딩
 	CK::Rectangle cameraRectangleBound(_GameEngine.GetCamera().GetRectangleBound());
 
-	// 의도적으로 짧게 설정
+	// 이제는 길게 설정
 	cameraCircleBound.Radius = 550.f;
 
 	// 랜덤하게 생성된 모든 게임 오브젝트들
@@ -105,9 +107,11 @@ void SoftRenderer::Render2D()
 
 		// 오브젝트의 원 바운딩 볼륨
 		Circle goCircleBound(mesh.GetCircleBound());
+
+		// 오브젝트의 사각형 바운딩 볼륨
 		CK::Rectangle goRectangleBound(mesh.GetRectangleBound());
 
-		// 메시의 바운딩 볼륨 정보를 가져와서 뷰 좌표계로 변환해 비교하기 ( 스케일도 고려해 직접 구현할 것. )
+		// 메시의 바운딩 볼륨 정보를 가져와서 뷰 좌표계로 변환해 비교하기
 		goCircleBound.Center *= finalMat;
 		goCircleBound.Radius *= transform.GetScale().Max();
 
